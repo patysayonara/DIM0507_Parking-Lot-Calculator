@@ -42,7 +42,7 @@ public class Main
 		}
 
 		// Exemplo de como identificar inputs fora do padrão
-		final String incorrectInput = "2011/10/09 11h20min";
+		final String incorrectInput = "2019.11.31 20:20";
 		try
 		{
 			LocalDateTime.parse(incorrectInput, Constants.DATE_FORMATTER);
