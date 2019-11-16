@@ -1,7 +1,12 @@
 package imd0412.parkinglot.util;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class Date {
 
+	static String DATE_EXCEPTION_MESSAGE = "Erro ao extrair data.";
+	
 	/**
 	 * Validate a date as a string based in a DateTimeFormatter template.
 	 * 
@@ -14,8 +19,8 @@ public class Date {
 	 * 			  DateTimeFormatter instance holding a date template
 	 * @return True if the date are well formatted
 	 */
-	static boolean validateFormat(String date) {
+	public static LocalDateTime dateValidator(String text, DateTimeFormatter formatter) {
 		// TODO
-		return false;
+		return null;
 	}
 }
