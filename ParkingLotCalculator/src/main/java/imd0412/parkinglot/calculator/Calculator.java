@@ -72,19 +72,19 @@ public class Calculator {
 		long days = duration.toDays();
 		
 		if(minutes >= 1 && minutes < 61) {
-			return 8.0f;
+			return 8F;
 		}
 		else if(minutes >= 61 && minutes <= 1440) {
-			return (float) (8+2*(Math.ceil(minutes/60)-1));
+			return (float) (8+2*(Math.ceil(minutes/60F)-1));
 		}
 		else if(minutes > 1440 && minutes <= 10080) {
-			return (float) (8+2*(Math.ceil(minutes/60)-1)+50*(days-1));
+			return (float) (8+2*(Math.ceil(minutes/60F)-1)+50*(days-1));
 		}
 		else if(minutes > 10080) {
-			return (float) (8+2*(Math.ceil(minutes/60)-1)+30*(days-1));
+			return (float) (8+2*(Math.ceil(minutes/60F)-1)+30*(days-1));
 		}
 		
-		return 0.0f;
+		return 0F;
 	}
 	
 	private Float calculateLongTermCost(Duration duration) {
@@ -92,19 +92,19 @@ public class Calculator {
 		long days = duration.toDays();
 		
 		if(minutes >= 1 && minutes <= 1440) {
-			return 70.0f;
+			return 70F;
 		}
 		else if(minutes > 1440 && minutes <= 10080) {
-			return (float) (70+(Math.ceil(minutes/1440))*50);
+			return (float) (70+(Math.ceil(minutes/1440F))*50);
 		}
 		else if(minutes > 10080 && minutes <= 43200) {
-			return (float) (70+(Math.ceil(minutes/1440))*30);
+			return (float) (70+(Math.ceil(minutes/1440F))*30);
 		}
 		else if(minutes > 43200) {
-			return (float) (70+(Math.ceil(minutes/1440))*30 + 500*Math.floor(days/30));
+			return (float) (70+(Math.ceil(minutes/1440F))*30 + 500*Math.floor(days/30F));
 		}
 		
-		return 0.0f;
+		return 0F;
 	}
 	
 	private Float calculateVIPCost(Duration duration) {
@@ -112,15 +112,15 @@ public class Calculator {
 		long days = duration.toDays();
 		
 		if(minutes >= 1 && minutes <= 10080) {
-			return 500.0f;
+			return 500F;
 		}
 		else if(minutes > 10080 && minutes <= 20160) {
-			return (float) (500+(Math.ceil(minutes/1440))*100);
+			return (float) (500+(Math.ceil(minutes/1440F))*100);
 		}
 		else if(minutes > 20160) {
-			return (float) (500+(Math.ceil(minutes/1440))*80);
+			return (float) (500+(Math.ceil(minutes/1440F))*80);
 		}
 		
-		return 0.0f;
+		return 0F;
 	}
 }
