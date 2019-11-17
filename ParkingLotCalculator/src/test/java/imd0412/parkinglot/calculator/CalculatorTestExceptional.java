@@ -43,7 +43,7 @@ public class CalculatorTestExceptional {
 	public String checkout;
 	
 	@Parameter(2)
-	public Exception expectedException;
+	public Class<? extends Exception> expectedException;
 	
 	@Parameter(3)
 	public String testName;
@@ -51,7 +51,7 @@ public class CalculatorTestExceptional {
 	
 	@Test
 	public void testCalculateParkingCost() {
-		e.expect((Matcher<?>) expectedException);
+		e.expect(expectedException);
 		e.expectMessage(CALCULATEPARKINGCOST_ERROR_MESSAGE);
 		
 		Calculator calculator = new Calculator();

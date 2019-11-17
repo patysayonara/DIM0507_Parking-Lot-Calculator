@@ -1,6 +1,6 @@
 package imd0412.parkinglot.exception;
 
-public class InvalidDataException extends Exception {
+public class InvalidDataException extends RuntimeException {
 	private static final long serialVersionUID = 1L;
 
 	private final InvalidDataType reason;

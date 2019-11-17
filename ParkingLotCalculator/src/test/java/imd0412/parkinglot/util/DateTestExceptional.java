@@ -14,6 +14,7 @@ import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
 import imd0412.parkinglot.Constants;
+import imd0412.parkinglot.exception.DateFormatException;
 import imd0412.parkinglot.exception.InvalidDataException;
 
 @RunWith(Parameterized.class)
@@ -27,7 +28,7 @@ public class DateTestExceptional {
 				{ "2010.02.31 10:10", InvalidDataException.class, "A3B1C1-Action2"},
 				{ "2010.04.31 10:10", InvalidDataException.class, "A3B2C1-Action2"},
 				{ "1969.07.20 10:10", InvalidDataException.class, "C2-Action2"},
-				{ "10:10 20/07/1969", DateTimeParseException.class, "E2-Action3"}
+				{ "10:10 20/07/1969", DateFormatException.class, "E2-Action3"}
 		});
 	}
 	
@@ -38,18 +39,17 @@ public class DateTestExceptional {
 	public String date;
 
 	@Parameter(1)
-	public Exception expectedException;
+	public Class<? extends Exception> expectedException;
 	
 	@Parameter(2)
 	public String testName;
 	
 	@Test
 	public void testNextDayInvalidFormat() {
-		e.expect((Matcher<?>) expectedException);
-		if (expectedException.getClass() == InvalidDataException.class)
-			e.expectMessage(Date.DATE_EXCEPTION_MESSAGE);
-		
-		Date.dateValidator(date, Constants.DATE_FORMATTER);
+		e.expect(expectedException);
+		e.expectMessage(Date.DATE_EXCEPTION_MESSAGE);
+	
+		System.out.println(Date.dateValidator(date, Constants.DATE_FORMATTER));
 	}
 
 }
