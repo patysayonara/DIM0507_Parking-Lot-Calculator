@@ -78,10 +78,10 @@ public class Calculator {
 			return (float) (8+2*(Math.ceil(minutes/60F)-1));
 		}
 		else if(minutes > 1440 && minutes <= 10080) {
-			return (float) (8+2*(Math.ceil(minutes/60F)-1)+50*(days-1));
+			return (float) (8+2*(Math.ceil(minutes/60F)-1)+50*(days));
 		}
 		else if(minutes > 10080) {
-			return (float) (8+2*(Math.ceil(minutes/60F)-1)+30*(days-1));
+			return (float) (8+2*(Math.ceil(minutes/60F)-1)+30*(days));
 		}
 		
 		return 0F;
@@ -95,13 +95,13 @@ public class Calculator {
 			return 70F;
 		}
 		else if(minutes > 1440 && minutes <= 10080) {
-			return (float) (70+(Math.ceil(minutes/1440F))*50);
+			return (float) (70+(Math.ceil(minutes/1440F)-1)*50);
 		}
-		else if(minutes > 10080 && minutes <= 43200) {
-			return (float) (70+(Math.ceil(minutes/1440F))*30);
+		else if(minutes > 10080 && minutes < 43200) {
+			return (float) (70+(Math.ceil(minutes/1440F)-1)*30);
 		}
-		else if(minutes > 43200) {
-			return (float) (70+(Math.ceil(minutes/1440F))*30 + 500*Math.floor(days/30F));
+		else if(minutes >= 43200) {
+			return (float) (70+(Math.ceil(minutes/1440F)-1)*30 + 500*Math.floor(days/30F));
 		}
 		
 		return 0F;
@@ -115,10 +115,10 @@ public class Calculator {
 			return 500F;
 		}
 		else if(minutes > 10080 && minutes <= 20160) {
-			return (float) (500+(Math.ceil(minutes/1440F))*100);
+			return (float) (500+(days-7)*100);
 		}
 		else if(minutes > 20160) {
-			return (float) (500+(Math.ceil(minutes/1440F))*80);
+			return (float) (500+(days-7)*80);
 		}
 		
 		return 0F;
