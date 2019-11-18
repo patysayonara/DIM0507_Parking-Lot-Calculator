@@ -2,7 +2,6 @@ package imd0412.parkinglot.calculator;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeParseException;
 
 import imd0412.parkinglot.Constants;
 import imd0412.parkinglot.ParkingLotType;
@@ -36,7 +35,7 @@ public class Calculator {
 			checkinTime = Date.dateValidator(checkin, Constants.DATE_FORMATTER);
 			checkoutTime = Date.dateValidator(checkout, Constants.DATE_FORMATTER);
 		} catch(DateFormatException e){
-			throw new DateFormatException(CALCULATEPARKINGCOST_ERROR_MESSAGE); // Fiz esse catch só pra modificar a mensagem de erro
+			throw new DateFormatException(CALCULATEPARKINGCOST_ERROR_MESSAGE);
 		} catch(InvalidDataException e) {
 			throw new InvalidDataException(CALCULATEPARKINGCOST_ERROR_MESSAGE,e.getReason());
 		}
@@ -44,7 +43,7 @@ public class Calculator {
 		if(checkinTime.getYear() > 2018 || checkoutTime.getYear() > 2019) {
 			throw new InvalidDataException(CALCULATEPARKINGCOST_ERROR_MESSAGE, InvalidDataType.InvalidYear);
 		}
-		
+	
 		Duration duration = Duration.between(checkinTime, checkoutTime);
 		
 		if(duration.toMinutes() < 0) {

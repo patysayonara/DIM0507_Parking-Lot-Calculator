@@ -15,14 +15,7 @@ public class DateTest {
 
 	@Test
 	public void testDateValidator() {
-		LocalDateTime date = null;
-		try {
-			date = Date.dateValidator("2010.10.10 10:10", Constants.DATE_FORMATTER);
-		} catch(DateTimeParseException e){
-		} catch(InvalidDataException e) {
-		}
-		
-		System.out.println(date);
+		LocalDateTime date = Date.dateValidator("2010.10.10 10:10", Constants.DATE_FORMATTER);
 		
 		int year = date.getYear();
 		int month = date.getMonth().getValue();
